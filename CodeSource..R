@@ -5,72 +5,10 @@ library(ggplot2)
 source("SourceCode.R")
 
 
-sysMinDist <- cppMakeSys("model.R", reportVars = 3)
+sysMinDist <- cppMakeSys("introduction.R", reportVars = 3)
 resSimul <- cppRK4(sysMinDist)
 
-View(resSimul[,c("Temp","EF","E","F_tro_per","MC","d","F_tro")])
-
-
-matplot(resSimul[,c('omega',"phi","i")],type='l')
-
-matplot(resSimul[,c('kapa',"beta")],type='l')
-
-p1 <- matplot(resSimul$time+2016, resSimul[c("n")],lty=1, type="l",ylab="",xlab="")
-legend("topleft",bty='n',legend=c("n"),lty=1,col=1:3)
-
-p1 <- matplot(resSimul$time+2016, resSimul[c("p_car")],lty=1, type="l",ylab="",xlab="")
-legend("topleft",bty='n',legend=c("p_car"),lty=1,col=1:3)
-
-p1 <- matplot(resSimul$time+2016, resSimul$i*100,lty=1, type="l",ylab="",xlab="")
-#matlines(0:83,basex[2:85,c("sigma","i","lambda")],lty=2)
-legend("topleft",bty='n',legend=c("i%"),lty=1,col=1:3)
-
-p1 <- matplot(resSimul$time+2016, resSimul[c("lambda","omega")], ylim=c(0,1),lty=1, type="l",ylab="",xlab="")
-#matlines(0:83,basex[2:85,c("sigma","i","lambda")],lty=2)
-legend("topleft",bty='n',legend=c("lambda","omega"),lty=1,col=1:3)
-
-p1 <- matplot(resSimul$time+2016,resSimul$Y,lty=1, type="l",ylab="",xlab="")
-#matlines(0:83,basex[2:85,c("sigma","i","lambda")],lty=2)
-legend("topleft",bty='n',legend=c("Y"),lty=1,col=1:3)
-
-p1 <- matplot(resSimul$time+2016, resSimul[c("FO_r")],lty=1, type="l",ylab="Gtc",xlab="")
-#matlines(0:83,basex[2:85,c("sigma","i","lambda")],lty=2)
-legend("topleft",bty='n',legend=c("FO_r"),lty=1,col=1:3)
-
-
-p1 <- matplot(resSimul$time+2016, resSimul[c("F_bor","F_tro","F_tem")],lty=1, type="l",ylab="billion m3",xlab="")
-#matlines(0:83,basex[2:85,c("sigma","i","lambda")],lty=2)
-legend("topleft",bty='n',legend=c("F_bor","F_tro","F_tem"),lty=1,col=1:3)
-
-p1 <- matplot(resSimul$time+2016, resSimul[c("RE","RD","E_tro")],lty=1, type="l",ylab="",xlab="")
-#matlines(0:83,basex[2:85,c("sigma","i","lambda")],lty=2)
-legend("topleft",bty='n',legend=c("RE","RD","E_tro"),lty=1,col=1:3)
-
-p1 <- matplot(resSimul$time+2016, resSimul[c("FO_c","BI_m3")],lty=1, type="l",ylab="",xlab="")
-#matlines(0:83,basex[2:85,c("sigma","i","lambda")],lty=2)
-legend("topleft",bty='n',legend=c("FO (GtC)","BI (billion m3)"),lty=1,col=1:3)
-
-p1 <- matplot(resSimul$time+2016, resSimul[c("H_bor","H_tem","H_tro")],lty=1, type="l",ylab="billion m3",xlab="")
-#matlines(0:83,basex[2:85,c("sigma","i","lambda")],lty=2)
-legend("topleft",bty='n',legend=c("H_bor","H_tem","H_tro"),lty=1,col=1:3)
-
-p1 <- matplot(resSimul$time+2016, resSimul[c("HB_bor","HB_tem","HB_tro")],lty=1, type="l",ylab="billion m3",xlab="")
-#matlines(0:83,basex[2:85,c("sigma","i","lambda")],lty=2)
-legend("topleft",bty='n',legend=c("HB_bor","HB_tem","HB_tro"),lty=1,col=1:3)
-
-
-p1 <- matplot(resSimul$time+2016, resSimul[c("EF")],lty=1, ylim=c(-10,0), type="l",ylab="Gtc",xlab="")
-#matlines(0:83,basex[2:85,c("sigma","i","lambda")],lty=2)
-legend("topright",bty='n',legend=c("EF"),lty=1,col=1:3)
-
-p1 <- matplot(resSimul$time+2016, resSimul[c("E","E_ant")],lty=1, type="l",ylab="Gtc",xlab="")
-#matlines(0:83,basex[2:85,c("sigma","i","lambda")],lty=2)
-legend("bottomright",bty='n',legend=c("E","E_ant"),lty=1,col=1:3)
-
-p1 <- matplot(resSimul$time+2016, resSimul[c("Temp")],lty=1, type="l",ylab="",xlab="")
-#matlines(0:83,basex[2:85,c("sigma","i","lambda")],lty=2)
-legend("topleft",bty='n',legend=c("Temp"),lty=1,col=1:3)
-par(mfrow = c(1,1))
+View(resSimul[,c("")])
 
 par(mfrow = c(2,2), mar=c(2.1, 5.1, 4.1, 4.1), xpd=T)
 plot(x = resSimul$time+2016, y = resSimul$lambda, type = 'l', col = 'blue', xlab = '', ylab = '', ylim = c(0,1))
