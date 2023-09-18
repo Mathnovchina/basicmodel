@@ -1,17 +1,21 @@
 ##intermediate variables 
 
-
+Y = C + G                         # Output
+Tax = Theta * Y                   # Tax 
+Yd = Y - Tax                      # Disposable income
+C= a1*Yd+a2*S                     # Consumption
 ##time derivatives
-
-
+S = Yd - C                        # Savings
 
 ##initial values
-
-
+S = 80
 
 ##parameters
 
-
+Theta = 0.2                         # tax rate 
+a1 = 0.6                            # Marginal propensity to consume out of income
+a2 = 0.4                            # Marginal propensity to consume out of wealth
+G = 20                              # Exogenously defined government spending
 
 #_______________________________________________________________________________________________________________________________#
 ##time
